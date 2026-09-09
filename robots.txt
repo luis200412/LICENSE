@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luis200412.github.io/LICENSE/sitemap.xml
