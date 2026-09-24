@@ -18,6 +18,10 @@ contract RemixMessageStore {
         return _message;
     }
 
+    /// @notice Updates the stored message.
+    /// @dev Only the contract owner can call this function. Empty messages are rejected.
+    /// @param newMessage The new non-empty message to store on-chain.
+    /// @custom:emits MessageUpdated when the stored message changes.
     function setMessage(string calldata newMessage) external {
         if (msg.sender != owner) {
             revert NotOwner();
