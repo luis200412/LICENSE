@@ -64,6 +64,8 @@ In Remix:
 3. Compile `RemixMessageStore.sol`
 4. Confirm the compile completes without errors
 
+For explorer verification later, remember the verifier must match the **exact compiler version** you used in Remix.
+
 The contract uses:
 
 - explicit pragma: `pragma solidity ^0.8.24;`
@@ -176,7 +178,7 @@ If you want public source verification after deployment:
 3. Use the explorer's **Verify and Publish** flow
 4. Provide:
    - contract name: `RemixMessageStore`
-   - compiler version compatible with `0.8.24`
+   - the exact compiler version used for deployment
    - optimization settings matching your Remix compile configuration
    - the exact Solidity source from `contracts/RemixMessageStore.sol`
 
@@ -216,3 +218,9 @@ These steps must be completed by a human wallet owner:
 This repository includes a GitHub Actions workflow that compiles the Solidity contract without using secrets or deployment keys.
 
 The workflow only validates compilation; it does **not** deploy anything.
+
+Optional local validation:
+
+```bash
+bash scripts/validate-solidity.sh
+```
