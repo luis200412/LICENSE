@@ -223,6 +223,8 @@ The workflow only validates compilation; it does **not** deploy anything.
 Optional local validation on Linux/Ubuntu environments only.
 This helper script skips itself outside Linux, so it is intended mainly for Linux/Ubuntu environments, and it requires `bash`, `uname`, `curl`, GNU `sha256sum`, `mktemp`, `chmod`, and the ability to execute the downloaded Linux Solidity compiler binary in your shell environment. It also requires outbound network access to GitHub raw content so it can download the pinned Solidity compiler binary at runtime.
 
+On macOS or Windows, this command performs no validation. In those environments, use the GitHub Actions workflow or run the helper inside a Linux container or VM instead.
+
 ```bash
 bash scripts/validate-solidity.sh
 ```
