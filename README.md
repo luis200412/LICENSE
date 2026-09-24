@@ -219,7 +219,8 @@ This repository includes a GitHub Actions workflow that compiles the Solidity co
 
 The workflow only validates compilation; it does **not** deploy anything.
 
-Optional local validation on Linux/Ubuntu environments:
+Optional local validation on Linux/Ubuntu environments only.
+This helper script is not intended for macOS or Windows as written, and it requires both `curl` and GNU `sha256sum` to be available in your shell.
 
 ```bash
 bash scripts/validate-solidity.sh
