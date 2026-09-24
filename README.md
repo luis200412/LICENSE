@@ -219,7 +219,7 @@ This repository includes a GitHub Actions workflow that compiles the Solidity co
 
 The workflow only validates compilation; it does **not** deploy anything.
 
-Optional local validation:
+Optional local validation on Linux/Ubuntu environments:
 
 ```bash
 bash scripts/validate-solidity.sh
