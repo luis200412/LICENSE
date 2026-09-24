@@ -221,7 +221,7 @@ This repository includes a GitHub Actions workflow that compiles the Solidity co
 The workflow only validates compilation; it does **not** deploy anything.
 
 Optional local validation on Linux/Ubuntu environments only.
-This helper script is not intended for macOS or Windows as written, and it requires `curl`, GNU `sha256sum`, `mktemp`, `chmod`, and the ability to execute the Linux `solc-static-linux` compiler binary in your shell environment.
+This helper script is not intended for macOS or Windows as written, and it requires `bash`, `curl`, GNU `sha256sum`, `mktemp`, `chmod`, and the ability to execute the Linux `solc-static-linux` compiler binary in your shell environment.
 
 ```bash
 bash scripts/validate-solidity.sh
