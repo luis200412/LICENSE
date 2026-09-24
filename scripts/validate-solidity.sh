@@ -41,5 +41,5 @@ fi
 
 (
     cd "$TMP_DIR"
-    "$SOLC_PATH" --metadata-hash ipfs --combined-json abi,bin "${CONTRACT_FILES[@]}" > /dev/null
+    "$SOLC_PATH" --metadata-hash ipfs --combined-json abi,bin,userdoc,devdoc "${CONTRACT_FILES[@]}" > /dev/null
 )
