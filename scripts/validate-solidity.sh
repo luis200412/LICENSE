@@ -18,8 +18,9 @@ for required_tool in curl sha256sum; do
 done
 
 SOLC_VERSION="0.8.24"
+SOLC_BINARY="solc-linux-amd64-v${SOLC_VERSION}+commit.e11b9ed9"
 SOLC_SHA256="fb03a29a517452b9f12bcf459ef37d0a543765bb3bbc911e70a87d6a37c30d5f"
-SOLC_URL="https://github.com/ethereum/solidity/releases/download/v${SOLC_VERSION}/solc-static-linux"
+SOLC_URL="https://raw.githubusercontent.com/ethereum/solc-bin/gh-pages/linux-amd64/${SOLC_BINARY}"
 SOLC_PATH="${TMP_DIR}/solc"
 
 curl -fsSL "$SOLC_URL" -o "$SOLC_PATH"
