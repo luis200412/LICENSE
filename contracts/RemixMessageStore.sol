@@ -8,6 +8,7 @@ contract RemixMessageStore {
     event MessageUpdated(address indexed updatedBy, string newMessage);
 
     error NotOwner();
+    error EmptyMessage();
 
     constructor() {
         owner = msg.sender;
@@ -20,6 +21,9 @@ contract RemixMessageStore {
     function setMessage(string calldata newMessage) external {
         if (msg.sender != owner) {
             revert NotOwner();
+        }
+        if (bytes(newMessage).length == 0) {
+            revert EmptyMessage();
         }
 
         _message = newMessage;

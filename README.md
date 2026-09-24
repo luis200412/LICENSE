@@ -25,6 +25,7 @@ It is intentionally small so it can work with:
 - stores a message string on-chain
 - records the deployer as `owner`
 - allows only the owner to update the message
+- rejects empty message updates
 - emits an event when the message changes
 
 This is **not** a token, exchange, bridge, or financial product.
