@@ -18,7 +18,11 @@ SOLC_URL="https://github.com/ethereum/solidity/releases/download/v${SOLC_VERSION
 SOLC_PATH="${TMP_DIR}/solc"
 
 curl -fsSL "$SOLC_URL" -o "$SOLC_PATH"
-echo "${SOLC_SHA256}  ${SOLC_PATH}" | sha256sum --check --status
+if ! echo "${SOLC_SHA256}  ${SOLC_PATH}" | sha256sum --check --status; then
+    echo "SHA256 verification failed for the downloaded Solidity compiler binary." >&2
+    exit 1
+fi
+
 chmod +x "$SOLC_PATH"
 
 (
