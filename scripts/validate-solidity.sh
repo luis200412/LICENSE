@@ -31,7 +31,15 @@ fi
 
 chmod +x "$SOLC_PATH"
 
+shopt -s nullglob
+CONTRACT_FILES=("${ROOT_DIR}"/contracts/*.sol)
+
+if [[ ${#CONTRACT_FILES[@]} -eq 0 ]]; then
+    echo "No Solidity contracts found under ${ROOT_DIR}/contracts." >&2
+    exit 1
+fi
+
 (
     cd "$TMP_DIR"
-    "$SOLC_PATH" --metadata-hash ipfs --combined-json abi,bin "${ROOT_DIR}/contracts/RemixMessageStore.sol" > /dev/null
+    "$SOLC_PATH" --metadata-hash ipfs --combined-json abi,bin "${CONTRACT_FILES[@]}" > /dev/null
 )
