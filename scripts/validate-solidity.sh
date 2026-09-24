@@ -5,6 +5,11 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 TMP_DIR="$(mktemp -d)"
 trap 'rm -rf "$TMP_DIR"' EXIT
 
+if [[ "$(uname -s)" != "Linux" ]]; then
+    echo "This validation helper is intended for Linux environments only." >&2
+    exit 1
+fi
+
 for required_tool in curl sha256sum; do
     if ! command -v "$required_tool" >/dev/null 2>&1; then
         echo "Missing required tool: ${required_tool}" >&2
