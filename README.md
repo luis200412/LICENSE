@@ -60,7 +60,7 @@ Choose one of these methods:
 In Remix:
 
 1. Open the **Solidity Compiler** tab
-2. Select compiler version **0.8.24** or a compatible `0.8.x` version
+2. Select compiler version **0.8.24**
 3. Compile `RemixMessageStore.sol`
 4. Confirm the compile completes without errors
 
