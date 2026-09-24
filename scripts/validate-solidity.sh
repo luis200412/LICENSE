@@ -8,10 +8,14 @@ trap 'rm -rf "$TMP_DIR"' EXIT
 SOLC_VERSION="0.8.24"
 SOLC_BINARY="solc-linux-amd64-v${SOLC_VERSION}+commit.e11b9ed9"
 SOLC_SHA256="fb03a29a517452b9f12bcf459ef37d0a543765bb3bbc911e70a87d6a37c30d5f"
-SOLC_URL="https://raw.githubusercontent.com/argotorg/solc-bin/gh-pages/linux-amd64/${SOLC_BINARY}"
+SOLC_URL="https://binaries.soliditylang.org/linux-amd64/${SOLC_BINARY}"
+SOLC_FALLBACK_URL="https://raw.githubusercontent.com/argotorg/solc-bin/gh-pages/linux-amd64/${SOLC_BINARY}"
 SOLC_PATH="${TMP_DIR}/solc"
 
-curl -fsSL "$SOLC_URL" -o "$SOLC_PATH"
+if ! curl -fsSL "$SOLC_URL" -o "$SOLC_PATH" 2>/dev/null; then
+    curl -fsSL "$SOLC_FALLBACK_URL" -o "$SOLC_PATH"
+fi
+
 echo "${SOLC_SHA256}  ${SOLC_PATH}" | sha256sum --check --status
 chmod +x "$SOLC_PATH"
 
