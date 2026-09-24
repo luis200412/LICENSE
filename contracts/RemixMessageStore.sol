@@ -31,6 +31,6 @@ contract RemixMessageStore {
         }
 
         _message = newMessage;
-        emit MessageUpdated(msg.sender, newMessage);
+        emit MessageUpdated(msg.sender, _message);
     }
 }
