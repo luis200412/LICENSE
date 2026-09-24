@@ -49,7 +49,7 @@ Choose one of these methods:
 - **Upload/import manually**
   - Download or clone this repository
   - Open [Remix IDE](https://remix.ethereum.org/)
-  - In the File Explorers panel, create a `contracts` folder if needed
+  - In the File Explorer panel, create a `contracts` folder if needed
   - Upload `contracts/RemixMessageStore.sol` from your local copy
 
 - **Copy/paste**
@@ -221,7 +221,7 @@ This repository includes a GitHub Actions workflow that compiles the Solidity co
 The workflow only validates compilation; it does **not** deploy anything.
 
 Optional local validation on Linux/Ubuntu environments only.
-This helper script exits with an error outside Linux, so it is not intended for macOS or Windows as written, and it requires `bash`, `uname`, `curl`, GNU `sha256sum`, `mktemp`, `chmod`, and the ability to execute the downloaded Linux Solidity compiler binary in your shell environment. It also requires outbound network access to GitHub raw content so it can download the pinned Solidity compiler binary at runtime.
+This helper script skips itself outside Linux, so it is intended mainly for Linux/Ubuntu environments, and it requires `bash`, `uname`, `curl`, GNU `sha256sum`, `mktemp`, `chmod`, and the ability to execute the downloaded Linux Solidity compiler binary in your shell environment. It also requires outbound network access to GitHub raw content so it can download the pinned Solidity compiler binary at runtime.
 
 ```bash
 bash scripts/validate-solidity.sh

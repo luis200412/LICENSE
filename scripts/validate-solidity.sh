@@ -6,8 +6,8 @@ TMP_DIR="$(mktemp -d)"
 trap 'rm -rf "$TMP_DIR"' EXIT
 
 if [[ "$(uname -s)" != "Linux" ]]; then
-    echo "This validation helper is intended for Linux environments only." >&2
-    exit 1
+    echo "Skipping local Solidity validation: this helper only runs on Linux environments." >&2
+    exit 0
 fi
 
 for required_tool in curl sha256sum; do
