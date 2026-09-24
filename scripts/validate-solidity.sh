@@ -3,7 +3,15 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 TMP_DIR="$(mktemp -d)"
-trap 'rm -rf "$TMP_DIR"' EXIT
+cleanup() {
+    local status=$?
+    if [[ $status -eq 0 ]]; then
+        rm -rf "$TMP_DIR"
+    else
+        echo "Validation failed. Temporary files preserved at: ${TMP_DIR}" >&2
+    fi
+}
+trap cleanup EXIT
 
 if [[ "$(uname -s)" != "Linux" ]]; then
     echo "Skipping local Solidity validation: this helper only runs on Linux environments." >&2
@@ -41,5 +49,5 @@ fi
 
 (
     cd "$TMP_DIR"
-    "$SOLC_PATH" --metadata-hash ipfs --combined-json abi,bin,userdoc,devdoc "${CONTRACT_FILES[@]}" > /dev/null
+    "$SOLC_PATH" --metadata-hash ipfs --combined-json abi,bin,userdoc,devdoc "${CONTRACT_FILES[@]}" > "${TMP_DIR}/solc-output.json"
 )
